@@ -21,6 +21,13 @@ github.com/google/uuid
 # github.com/joho/godotenv v1.5.1
 ## explicit; go 1.12
 github.com/joho/godotenv
+# github.com/stretchr/testify v1.12.1
+## explicit; go 1.17
+github.com/stretchr/testify/assert
+github.com/stretchr/testify/assert/yaml
+github.com/stretchr/testify/internal/difflib
+github.com/stretchr/testify/internal/spew
+github.com/stretchr/testify/require
 # github.com/tursodatabase/libsql-client-go v0.0.0-20260528064733-9d5d30a29a60
 ## explicit; go 1.20
 github.com/tursodatabase/libsql-client-go/libsql
@@ -31,6 +38,9 @@ github.com/tursodatabase/libsql-client-go/libsql/internal/http/shared
 github.com/tursodatabase/libsql-client-go/libsql/internal/ws
 github.com/tursodatabase/libsql-client-go/sqliteparser
 github.com/tursodatabase/libsql-client-go/sqliteparserutils
+# go.yaml.in/yaml/v3 v3.0.5
+## explicit; go 1.16
+go.yaml.in/yaml/v3
 # golang.org/x/exp v0.0.0-20261014143641-f0251eb4aa3e
 ## explicit; go 1.26.0
 golang.org/x/exp/slices
