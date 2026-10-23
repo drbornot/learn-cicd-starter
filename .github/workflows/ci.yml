@@ -38,3 +38,8 @@ jobs:
 
       - name: Run Tests
         run: go test -cover ./...
+
+      - name: Run Gosec Security Scanner
+        uses: securego/gosec@master
+        with:
+          args: ./...
