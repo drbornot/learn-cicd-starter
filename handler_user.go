@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/bootdotdev/learn-cicd-starter/internal/database"
+	"github.com/Bootdev/learn-cicd-starter/internal/database"
 	"github.com/google/uuid"
 )
 
