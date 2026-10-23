@@ -5,6 +5,24 @@ on:
     branches: [main]
 
 jobs:
+  style:
+    name: Style
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v6
+
+      - name: Set up Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: "1.27.3"
+
+      - name: Run Formatter
+        run: test -z $(go fmt ./...)
+
+      - name: Install and Run Staticcheck
+        run: go install honnef.co/go/tools/cmd/staticcheck@latest && staticcheck ./...
   tests:
     name: Tests
     runs-on: ubuntu-latest
@@ -20,3 +38,8 @@ jobs:
 
       - name: Run Tests
         run: go test -cover ./...
+
+      - name: Run Gosec Security Scanner
+        uses: securego/gosec@master
+        with:
+          args: ./...
