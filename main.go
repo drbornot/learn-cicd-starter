@@ -3,10 +3,13 @@ package main
 import (
 	"database/sql"
 	"embed"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
 	"os"
+	"strconv"
+	"time"
 
 	"github.com/Bootdev/learn-cicd-starter/internal/database"
 	"github.com/go-chi/chi"
@@ -29,8 +32,8 @@ func main() {
 		log.Printf("warning: assuming default configuration. .env unreadable: %v", err)
 	}
 
-	port := os.Getenv("PORT")
-	if port == "" {
+	port, err := strconv.Atoi(os.Getenv("PORT"))
+	if err != nil || port == 0 {
 		log.Fatal("PORT environment variable is not set")
 	}
 
@@ -88,10 +91,11 @@ func main() {
 
 	router.Mount("/v1", v1Router)
 	srv := &http.Server{
-		Addr:    ":" + port,
-		Handler: router,
+		Addr:              fmt.Sprintf(":%d", port),
+		Handler:           router,
+		ReadHeaderTimeout: 5 * time.Second,
 	}
 
-	log.Printf("Serving on port: %s\n", port)
+	log.Printf("Serving on port: %d", port)
 	log.Fatal(srv.ListenAndServe())
 }
